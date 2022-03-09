@@ -1,0 +1,39 @@
+Drop TABLE if exists User;
+Drop TABLE if exists Person;
+Drop TABLE if exists Event;
+Drop TABLE if exists Authtoken;
+
+CREATE TABLE "Person" (
+    personID    String not null Unique,
+    associatedUsername  String not null,
+    firstName   String not null,
+    lastName    String not null,
+    gender  String not null,
+    fatherID    String,
+    motherID    String,
+    spouseID    String
+);
+CREATE TABLE "Event" (
+    eventID String not null Unique,
+    associatedUsername  String not null,
+    personID    String not null,
+    latitude    float not null,
+    longitude   float not null,
+    country String not null,
+    city    String not null,
+    eventType   String not null,
+    year    int not null
+);
+CREATE TABLE "Authtoken" (
+    authtoken   String not null Unique,
+    username    String not null
+);
+CREATE TABLE "User" (
+    username    String not null Unique,
+    password    String not null,
+    email   String not null,
+    firstName   String not null,
+    lastName    String not null,
+    gender  String not null,
+    personID    String not null
+);
